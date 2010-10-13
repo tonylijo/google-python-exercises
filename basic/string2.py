@@ -16,8 +16,15 @@
 # If the string length is less than 3, leave it unchanged.
 # Return the resulting string.
 def verbing(s):
+  if len(s) >= 3:
+    if s[-3:] == 'ing':
+      name = s + 'ly'
+    else:
+      name = s + 'ing'
+  else:
+    name = s
   # +++your code here+++
-  return
+  return name
 
 
 # E. not_bad
@@ -30,9 +37,13 @@ def verbing(s):
 # This dinner is good!
 def not_bad(s):
   # +++your code here+++
-  return
-
-
+  not_index = s.find('not')
+  bad_index = s.find('bad')
+  name = s
+  if not_index != -1 and bad_index != -1:
+    if not_index < bad_index:
+      name = s[:not_index] + 'good' + s[bad_index+len('bad'):]
+  return name
 # F. front_back
 # Consider dividing a string into two halves.
 # If the length is even, the front and back halves are the same length.
@@ -42,7 +53,19 @@ def not_bad(s):
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
   # +++your code here+++
-  return
+  if len(a) % 2 == 0:
+    a_front = a[:(len(a)/2)]
+    a_back = a[(len(a)/2):]
+  else:
+    a_front = a[:((len(a)/2)+1)]
+    a_back = a[((len(a)/2)+1):]
+  if len(b) % 2 == 0:
+    b_front = b[:(len(b)/2)]
+    b_back = b[(len(b)/2):]
+  else:
+    b_front = b[:((len(b)/2)+1)]
+    b_back = b[((len(b)/2)+1):]
+  return a_front + b_front + a_back + b_back
 
 
 # Simple provided test() function used in main() to print
